@@ -6,12 +6,6 @@ import InputBar from './InputBar'
 const ChatUI: React.FC = () => {
 
 const [aioutput,setAiOutput]=useState<string|null>('');
-    
-
-//   const messages = [
-    
-//     { id: 1, role: 'assistant', text: aioutput }
-//   ]
 
   return (
     <div className="llm-app">
@@ -32,7 +26,7 @@ const [aioutput,setAiOutput]=useState<string|null>('');
        
         </section>
 
-        <InputBar aioutput={aioutput} setAiOutput={setAiOutput}/>
+        <InputBar setAiOutput={setAiOutput}/>
       </main>
     </div>
   )

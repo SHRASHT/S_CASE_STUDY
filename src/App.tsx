@@ -1,16 +1,13 @@
-import { useState } from 'react'
+
 import ChatUI from './components/ChatUI'
 
 function App() {
 
   return (
     <>
-      
-
       <div className='ai_structure'>
         <ChatUI />
       </div>
-      
     </>
   )
 }

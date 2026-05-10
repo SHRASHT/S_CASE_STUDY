@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Mic } from 'lucide-react';
 
 interface AiProps {
-  aioutput: string | null,
   setAiOutput: React.Dispatch<React.SetStateAction<string | null>>
 }
 
@@ -15,7 +14,7 @@ const keys = [
 
 let keyIndex = 0;
 
-const InputBar: React.FC<AiProps> = ({ aioutput, setAiOutput }) => {
+const InputBar: React.FC<AiProps> = ({setAiOutput }) => {
   const [value, setValue] = useState('');
 
   const handleAudioTranscription = () => {
@@ -73,11 +72,11 @@ const InputBar: React.FC<AiProps> = ({ aioutput, setAiOutput }) => {
           max_tokens: 300,
           messages: [
             {
-              role: 'system',        // 👈 system prompt separated out
+              role: 'system',        
               content: `McKinsey SM. Mock BA interview. Be harsh, no tips, challenge weak logic, interrupt rambling.`
             },
             {
-              role: 'user',          // 👈 just role + content, no nesting
+              role: 'user',          
               content: value
             }
           ],
@@ -97,7 +96,7 @@ const InputBar: React.FC<AiProps> = ({ aioutput, setAiOutput }) => {
       if (status === 429 || status === 401) {
         console.warn(`Key ${keyIndex + 1} failed (${status}), switching...`);
         keyIndex = (keyIndex + 1) % keys.length;
-        await sendToGemma(attempt + 1); // retry with next key
+        await sendToGemma(attempt + 1); 
       } else {
         console.error(error);
       }
